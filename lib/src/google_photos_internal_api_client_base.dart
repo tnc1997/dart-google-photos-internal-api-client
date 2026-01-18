@@ -1,6 +1,9 @@
-// TODO: Put public facing types in this file.
+import 'package:http/http.dart' as http;
 
-/// Checks if you are awesome. Spoiler: you are.
-class Awesome {
-  bool get isAwesome => true;
+class GooglePhotosInternalApiClient {
+  final http.Client _client;
+
+  GooglePhotosInternalApiClient({
+    http.Client? client,
+  }) : _client = client ?? http.Client();
 }
