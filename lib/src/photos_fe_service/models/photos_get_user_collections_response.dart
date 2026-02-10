@@ -19,3 +19,32 @@ class PhotosGetUserCollectionsResponseAlbumCoverPhoto {
     );
   }
 }
+
+class PhotosGetUserCollectionsResponseAlbumDetailsTimestamps {
+  DateTime? createdAt;
+  DateTime? endDate;
+  DateTime? startDate;
+  DateTime? updatedAt;
+
+  PhotosGetUserCollectionsResponseAlbumDetailsTimestamps({
+    this.createdAt,
+    this.endDate,
+    this.startDate,
+    this.updatedAt,
+  });
+
+  factory PhotosGetUserCollectionsResponseAlbumDetailsTimestamps.fromData(
+    List<dynamic> data,
+  ) {
+    return PhotosGetUserCollectionsResponseAlbumDetailsTimestamps(
+      createdAt:
+          data[4] != null ? DateTime.fromMillisecondsSinceEpoch(data[4]) : null,
+      endDate:
+          data[1] != null ? DateTime.fromMillisecondsSinceEpoch(data[1]) : null,
+      startDate:
+          data[0] != null ? DateTime.fromMillisecondsSinceEpoch(data[0]) : null,
+      updatedAt:
+          data[9] != null ? DateTime.fromMillisecondsSinceEpoch(data[9]) : null,
+    );
+  }
+}
