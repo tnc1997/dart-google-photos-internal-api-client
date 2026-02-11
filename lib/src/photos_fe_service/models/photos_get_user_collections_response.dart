@@ -20,6 +20,52 @@ class PhotosGetUserCollectionsResponseAlbumCoverPhoto {
   }
 }
 
+class PhotosGetUserCollectionsResponseAlbumDetails {
+  bool? isShared;
+  int? mediaItemsCount;
+  PhotosGetUserCollectionsResponseAlbumDetailsTimestamps? timestamps;
+  String? title;
+  Uri? url;
+
+  PhotosGetUserCollectionsResponseAlbumDetails({
+    this.isShared,
+    this.mediaItemsCount,
+    this.timestamps,
+    this.title,
+    this.url,
+  });
+
+  factory PhotosGetUserCollectionsResponseAlbumDetails.fromData(
+    List<dynamic> data,
+  ) {
+    switch (data.length) {
+      case 7:
+        return PhotosGetUserCollectionsResponseAlbumDetails(
+          isShared: data[4],
+          mediaItemsCount: data[3],
+          timestamps: data[2] != null
+              ? PhotosGetUserCollectionsResponseAlbumDetailsTimestamps.fromData(
+                  data[2])
+              : null,
+          title: data[1],
+        );
+      case 11:
+        return PhotosGetUserCollectionsResponseAlbumDetails(
+          isShared: data[4],
+          mediaItemsCount: data[3],
+          timestamps: data[2] != null
+              ? PhotosGetUserCollectionsResponseAlbumDetailsTimestamps.fromData(
+                  data[2])
+              : null,
+          title: data[1],
+          url: data[10] != null ? Uri.parse(data[10]) : null,
+        );
+      default:
+        throw ArgumentError.value(data, 'data');
+    }
+  }
+}
+
 class PhotosGetUserCollectionsResponseAlbumDetailsTimestamps {
   DateTime? createdAt;
   DateTime? endDate;
