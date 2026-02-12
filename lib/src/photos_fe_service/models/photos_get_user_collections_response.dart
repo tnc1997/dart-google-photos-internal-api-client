@@ -94,3 +94,19 @@ class PhotosGetUserCollectionsResponseAlbumDetailsTimestamps {
     );
   }
 }
+
+class PhotosGetUserCollectionsResponseAlbumOwner {
+  String? id;
+
+  PhotosGetUserCollectionsResponseAlbumOwner({
+    this.id,
+  });
+
+  factory PhotosGetUserCollectionsResponseAlbumOwner.fromData(
+    List<dynamic> data,
+  ) {
+    return PhotosGetUserCollectionsResponseAlbumOwner(
+      id: data[0],
+    );
+  }
+}
