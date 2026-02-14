@@ -1,3 +1,68 @@
+class PhotosGetUserCollectionsResponseAlbum {
+  PhotosGetUserCollectionsResponseAlbumCoverPhoto? coverPhoto;
+  PhotosGetUserCollectionsResponseAlbumDetails? details;
+  String? id;
+  PhotosGetUserCollectionsResponseAlbumOwner? owner;
+
+  PhotosGetUserCollectionsResponseAlbum({
+    this.coverPhoto,
+    this.details,
+    this.id,
+    this.owner,
+  });
+
+  factory PhotosGetUserCollectionsResponseAlbum.fromData(
+    List<dynamic> data,
+  ) {
+    switch (data.length) {
+      case 9:
+        return PhotosGetUserCollectionsResponseAlbum(
+          coverPhoto: data[1] != null
+              ? PhotosGetUserCollectionsResponseAlbumCoverPhoto.fromData(
+                  data[1])
+              : null,
+          details: data[8]['72930366'] != null
+              ? PhotosGetUserCollectionsResponseAlbumDetails.fromData(
+                  data[8]['72930366'])
+              : null,
+          id: data[0],
+          owner: data[6] != null
+              ? PhotosGetUserCollectionsResponseAlbumOwner.fromData(data[6])
+              : null,
+        );
+      case 12:
+        return PhotosGetUserCollectionsResponseAlbum(
+          coverPhoto: data[1] != null
+              ? PhotosGetUserCollectionsResponseAlbumCoverPhoto.fromData(
+                  data[1])
+              : null,
+          details: data[11]['72930366'] != null
+              ? PhotosGetUserCollectionsResponseAlbumDetails.fromData(
+                  data[11]['72930366'])
+              : null,
+          id: data[0],
+          owner: data[6] != null
+              ? PhotosGetUserCollectionsResponseAlbumOwner.fromData(data[6])
+              : null,
+        );
+    }
+
+    return PhotosGetUserCollectionsResponseAlbum(
+      coverPhoto: data[1] != null
+          ? PhotosGetUserCollectionsResponseAlbumCoverPhoto.fromData(data[1])
+          : null,
+      details: data[data.length - 1]['72930366'] != null
+          ? PhotosGetUserCollectionsResponseAlbumDetails.fromData(
+              data[data.length - 1]['72930366'])
+          : null,
+      id: data[0],
+      owner: data[6] != null
+          ? PhotosGetUserCollectionsResponseAlbumOwner.fromData(data[6])
+          : null,
+    );
+  }
+}
+
 class PhotosGetUserCollectionsResponseAlbumCoverPhoto {
   int? height;
   Uri? url;
