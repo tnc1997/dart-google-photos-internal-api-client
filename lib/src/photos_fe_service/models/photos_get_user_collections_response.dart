@@ -1,3 +1,38 @@
+class PhotosGetUserCollectionsResponse {
+  List<PhotosGetUserCollectionsResponseAlbum>? albums;
+  String? nextPageId;
+
+  PhotosGetUserCollectionsResponse({
+    this.albums,
+    this.nextPageId,
+  });
+
+  factory PhotosGetUserCollectionsResponse.fromData(
+    List<dynamic> data,
+  ) {
+    switch (data.length) {
+      case 1:
+        return PhotosGetUserCollectionsResponse(
+          albums: data[0]
+              ?.map<PhotosGetUserCollectionsResponseAlbum>((data) =>
+                  PhotosGetUserCollectionsResponseAlbum.fromData(data))
+              .toList(),
+        );
+      case 2:
+      case 4:
+        return PhotosGetUserCollectionsResponse(
+          albums: data[0]
+              ?.map<PhotosGetUserCollectionsResponseAlbum>((data) =>
+                  PhotosGetUserCollectionsResponseAlbum.fromData(data))
+              .toList(),
+          nextPageId: data[1],
+        );
+      default:
+        throw ArgumentError.value(data, 'data');
+    }
+  }
+}
+
 class PhotosGetUserCollectionsResponseAlbum {
   PhotosGetUserCollectionsResponseAlbumCoverPhoto? coverPhoto;
   PhotosGetUserCollectionsResponseAlbumDetails? details;
