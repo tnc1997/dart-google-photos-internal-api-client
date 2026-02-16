@@ -5,3 +5,4 @@ export 'src/common/exceptions/google_photos_internal_api_client_exception.dart';
 export 'src/common/exceptions/property_not_found_cookie_client_exception.dart';
 export 'src/common/exceptions/variable_not_found_cookie_client_exception.dart';
 export 'src/google_photos_internal_api_client_base.dart';
+export 'src/photos_fe_service/services/photos_fe_service.dart';
