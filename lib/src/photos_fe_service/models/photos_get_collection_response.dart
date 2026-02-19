@@ -1,3 +1,19 @@
+class PhotosGetCollectionResponseMediaItemVideoSpecialType {
+  String? id;
+
+  PhotosGetCollectionResponseMediaItemVideoSpecialType({
+    this.id,
+  });
+
+  factory PhotosGetCollectionResponseMediaItemVideoSpecialType.fromData(
+    List<dynamic> data,
+  ) {
+    return PhotosGetCollectionResponseMediaItemVideoSpecialType(
+      id: data[2],
+    );
+  }
+}
+
 class PhotosGetCollectionResponseMediaItemVideoThumbnail {
   Uri? url;
 
