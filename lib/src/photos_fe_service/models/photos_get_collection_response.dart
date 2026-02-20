@@ -1,3 +1,52 @@
+class PhotosGetCollectionResponseMediaItemVideo {
+  int? duration;
+  int? height;
+  PhotosGetCollectionResponseMediaItemVideoSpecialType? specialType;
+  PhotosGetCollectionResponseMediaItemVideoThumbnail? thumbnail;
+  int? width;
+
+  PhotosGetCollectionResponseMediaItemVideo({
+    this.duration,
+    this.height,
+    this.specialType,
+    this.thumbnail,
+    this.width,
+  });
+
+  factory PhotosGetCollectionResponseMediaItemVideo.fromData(
+    List<dynamic> data,
+  ) {
+    switch (data.length) {
+      case 14:
+        return PhotosGetCollectionResponseMediaItemVideo(
+          duration: data[0],
+          height: data[3],
+          thumbnail: data[13] != null
+              ? PhotosGetCollectionResponseMediaItemVideoThumbnail.fromData(
+                  data[13])
+              : null,
+          width: data[2],
+        );
+      case 15:
+        return PhotosGetCollectionResponseMediaItemVideo(
+          duration: data[0],
+          height: data[3],
+          specialType: data[14] != null
+              ? PhotosGetCollectionResponseMediaItemVideoSpecialType.fromData(
+                  data[14])
+              : null,
+          thumbnail: data[13] != null
+              ? PhotosGetCollectionResponseMediaItemVideoThumbnail.fromData(
+                  data[13])
+              : null,
+          width: data[2],
+        );
+      default:
+        throw ArgumentError.value(data, 'data');
+    }
+  }
+}
+
 class PhotosGetCollectionResponseMediaItemVideoSpecialType {
   String? id;
 
