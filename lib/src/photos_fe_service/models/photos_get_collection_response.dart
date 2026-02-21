@@ -1,3 +1,19 @@
+class PhotosGetCollectionResponseMediaItemOwner {
+  String? id;
+
+  PhotosGetCollectionResponseMediaItemOwner({
+    this.id,
+  });
+
+  factory PhotosGetCollectionResponseMediaItemOwner.fromData(
+    List<dynamic> data,
+  ) {
+    return PhotosGetCollectionResponseMediaItemOwner(
+      id: data[0],
+    );
+  }
+}
+
 class PhotosGetCollectionResponseMediaItemVideo {
   int? duration;
   int? height;
