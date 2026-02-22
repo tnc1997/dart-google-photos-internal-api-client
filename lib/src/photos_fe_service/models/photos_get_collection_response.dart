@@ -1,3 +1,26 @@
+class PhotosGetCollectionResponseMediaItemMotionPhoto {
+  int? duration;
+
+  PhotosGetCollectionResponseMediaItemMotionPhoto({
+    this.duration,
+  });
+
+  factory PhotosGetCollectionResponseMediaItemMotionPhoto.fromData(
+    List<dynamic> data,
+  ) {
+    switch (data.length) {
+      case 0:
+        return PhotosGetCollectionResponseMediaItemMotionPhoto();
+      case 2:
+        return PhotosGetCollectionResponseMediaItemMotionPhoto(
+          duration: data[1],
+        );
+      default:
+        throw ArgumentError.value(data, 'data');
+    }
+  }
+}
+
 class PhotosGetCollectionResponseMediaItemOwner {
   String? id;
 
