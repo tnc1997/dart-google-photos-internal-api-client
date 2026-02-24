@@ -1,3 +1,25 @@
+class PhotosGetCollectionResponseMediaItemDetails {
+  int? height;
+  Uri? url;
+  int? width;
+
+  PhotosGetCollectionResponseMediaItemDetails({
+    this.height,
+    this.url,
+    this.width,
+  });
+
+  factory PhotosGetCollectionResponseMediaItemDetails.fromData(
+    List<dynamic> data,
+  ) {
+    return PhotosGetCollectionResponseMediaItemDetails(
+      height: data[2],
+      url: data[0] != null ? Uri.parse(data[0]) : null,
+      width: data[1],
+    );
+  }
+}
+
 class PhotosGetCollectionResponseMediaItemMotionPhoto {
   int? duration;
 
