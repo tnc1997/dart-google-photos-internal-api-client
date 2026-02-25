@@ -1,3 +1,19 @@
+class PhotosGetCollectionResponseMediaItemAlbum {
+  String? id;
+
+  PhotosGetCollectionResponseMediaItemAlbum({
+    this.id,
+  });
+
+  factory PhotosGetCollectionResponseMediaItemAlbum.fromData(
+    List<dynamic> data,
+  ) {
+    return PhotosGetCollectionResponseMediaItemAlbum(
+      id: data[0],
+    );
+  }
+}
+
 class PhotosGetCollectionResponseMediaItemDetails {
   int? height;
   Uri? url;
