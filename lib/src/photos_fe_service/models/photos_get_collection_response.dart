@@ -1,3 +1,94 @@
+class PhotosGetCollectionResponseMediaItem {
+  List<PhotosGetCollectionResponseMediaItemAlbum>? albums;
+  DateTime? createdAt;
+  PhotosGetCollectionResponseMediaItemDetails? details;
+  String? id;
+  PhotosGetCollectionResponseMediaItemMotionPhoto? motionPhoto;
+  PhotosGetCollectionResponseMediaItemOwner? owner;
+  int? timezoneOffset;
+  DateTime? updatedAt;
+  PhotosGetCollectionResponseMediaItemVideo? video;
+
+  PhotosGetCollectionResponseMediaItem({
+    this.albums,
+    this.createdAt,
+    this.details,
+    this.id,
+    this.motionPhoto,
+    this.owner,
+    this.timezoneOffset,
+    this.updatedAt,
+    this.video,
+  });
+
+  factory PhotosGetCollectionResponseMediaItem.fromData(
+    List<dynamic> data,
+  ) {
+    switch (data.length) {
+      case 10:
+        return PhotosGetCollectionResponseMediaItem(
+          albums: data[9]['525000002']
+              ?.map<PhotosGetCollectionResponseMediaItemAlbum>((data) =>
+                  PhotosGetCollectionResponseMediaItemAlbum.fromData(data))
+              .toList(),
+          createdAt: data[2] != null
+              ? DateTime.fromMillisecondsSinceEpoch(data[2])
+              : null,
+          details: data[1] != null
+              ? PhotosGetCollectionResponseMediaItemDetails.fromData(data[1])
+              : null,
+          id: data[0],
+          motionPhoto: data[9]['146008172'] != null
+              ? PhotosGetCollectionResponseMediaItemMotionPhoto.fromData(
+                  data[9]['146008172'])
+              : null,
+          owner: data[6] != null
+              ? PhotosGetCollectionResponseMediaItemOwner.fromData(data[6])
+              : null,
+          timezoneOffset: data[4],
+          updatedAt: data[5] != null
+              ? DateTime.fromMillisecondsSinceEpoch(data[5])
+              : null,
+          video: data[9]['76647426'] != null
+              ? PhotosGetCollectionResponseMediaItemVideo.fromData(
+                  data[9]['76647426'])
+              : null,
+        );
+      case 11:
+        return PhotosGetCollectionResponseMediaItem(
+          albums: data[10]['525000002']
+              ?.map<PhotosGetCollectionResponseMediaItemAlbum>((data) =>
+                  PhotosGetCollectionResponseMediaItemAlbum.fromData(data))
+              .toList(),
+          createdAt: data[2] != null
+              ? DateTime.fromMillisecondsSinceEpoch(data[2])
+              : null,
+          details: data[1] != null
+              ? PhotosGetCollectionResponseMediaItemDetails.fromData(data[1])
+              : null,
+          id: data[0],
+          motionPhoto: data[10]['146008172'] != null
+              ? PhotosGetCollectionResponseMediaItemMotionPhoto.fromData(
+                  data[10]['146008172'])
+              : null,
+          owner: data[6] != null
+              ? PhotosGetCollectionResponseMediaItemOwner.fromData(data[6])
+              : null,
+          timezoneOffset: data[4],
+          updatedAt: data[5] != null
+              ? DateTime.fromMillisecondsSinceEpoch(data[5])
+              : null,
+          video: data[10]['76647426'] != null
+              ? PhotosGetCollectionResponseMediaItemVideo.fromData(
+                  data[10]['76647426'])
+              : null,
+        );
+      default:
+        throw ArgumentError.value(data, 'data');
+    }
+  }
+}
+
 class PhotosGetCollectionResponseMediaItemAlbum {
   String? id;
 
