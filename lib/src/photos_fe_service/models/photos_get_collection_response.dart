@@ -1,3 +1,20 @@
+class PhotosGetCollectionResponseAlbumUserTimestamps {
+  DateTime? viewedAt;
+
+  PhotosGetCollectionResponseAlbumUserTimestamps({
+    this.viewedAt,
+  });
+
+  factory PhotosGetCollectionResponseAlbumUserTimestamps.fromData(
+    List<dynamic> data,
+  ) {
+    return PhotosGetCollectionResponseAlbumUserTimestamps(
+      viewedAt:
+          data[0] != null ? DateTime.fromMillisecondsSinceEpoch(data[0]) : null,
+    );
+  }
+}
+
 class PhotosGetCollectionResponseMediaItem {
   List<PhotosGetCollectionResponseMediaItemAlbum>? albums;
   DateTime? createdAt;
