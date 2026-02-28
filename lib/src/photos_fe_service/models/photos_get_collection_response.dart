@@ -1,3 +1,19 @@
+class PhotosGetCollectionResponseAlbumUserPicture {
+  Uri? url;
+
+  PhotosGetCollectionResponseAlbumUserPicture({
+    this.url,
+  });
+
+  factory PhotosGetCollectionResponseAlbumUserPicture.fromData(
+    List<dynamic> data,
+  ) {
+    return PhotosGetCollectionResponseAlbumUserPicture(
+      url: data[0] != null ? Uri.parse(data[0]) : null,
+    );
+  }
+}
+
 class PhotosGetCollectionResponseAlbumUserTimestamps {
   DateTime? viewedAt;
 
