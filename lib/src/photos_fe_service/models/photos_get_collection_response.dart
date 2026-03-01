@@ -1,3 +1,27 @@
+class PhotosGetCollectionResponseAlbumUserIdentifiers {
+  String? googleAccountsAndIdAdministration;
+  String? googlePhotos;
+
+  PhotosGetCollectionResponseAlbumUserIdentifiers({
+    this.googleAccountsAndIdAdministration,
+    this.googlePhotos,
+  });
+
+  factory PhotosGetCollectionResponseAlbumUserIdentifiers.fromData(
+    List<dynamic> data,
+  ) {
+    switch (data.length) {
+      case 2:
+        return PhotosGetCollectionResponseAlbumUserIdentifiers(
+          googleAccountsAndIdAdministration: data[1],
+          googlePhotos: data[0],
+        );
+      default:
+        return PhotosGetCollectionResponseAlbumUserIdentifiers();
+    }
+  }
+}
+
 class PhotosGetCollectionResponseAlbumUserPicture {
   Uri? url;
 
