@@ -1,3 +1,34 @@
+class PhotosGetCollectionResponseAlbumUserDetails {
+  String? displayName;
+  String? gender;
+  String? givenName;
+
+  PhotosGetCollectionResponseAlbumUserDetails({
+    this.displayName,
+    this.gender,
+    this.givenName,
+  });
+
+  factory PhotosGetCollectionResponseAlbumUserDetails.fromData(
+    List<dynamic> data,
+  ) {
+    switch (data.length) {
+      case 2:
+        return PhotosGetCollectionResponseAlbumUserDetails(
+          givenName: data[0],
+        );
+      case 4:
+        return PhotosGetCollectionResponseAlbumUserDetails(
+          displayName: data[0],
+          gender: data[2],
+          givenName: data[3],
+        );
+      default:
+        throw ArgumentError.value(data, 'data');
+    }
+  }
+}
+
 class PhotosGetCollectionResponseAlbumUserIdentifiers {
   String? googleAccountsAndIdAdministration;
   String? googlePhotos;
