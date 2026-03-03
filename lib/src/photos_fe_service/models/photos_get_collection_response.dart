@@ -1,3 +1,39 @@
+class PhotosGetCollectionResponseAlbumUser {
+  PhotosGetCollectionResponseAlbumUserDetails? details;
+  PhotosGetCollectionResponseAlbumUserIdentifiers? identifiers;
+  String? phoneNumber;
+  PhotosGetCollectionResponseAlbumUserPicture? picture;
+  PhotosGetCollectionResponseAlbumUserTimestamps? timestamps;
+
+  PhotosGetCollectionResponseAlbumUser({
+    this.details,
+    this.identifiers,
+    this.picture,
+    this.phoneNumber,
+    this.timestamps,
+  });
+
+  factory PhotosGetCollectionResponseAlbumUser.fromData(
+    List<dynamic> data,
+  ) {
+    return PhotosGetCollectionResponseAlbumUser(
+      details: data[3] != null
+          ? PhotosGetCollectionResponseAlbumUserDetails.fromData(data[3])
+          : null,
+      identifiers: data[0] != null
+          ? PhotosGetCollectionResponseAlbumUserIdentifiers.fromData(data[0])
+          : null,
+      picture: data[11] != null
+          ? PhotosGetCollectionResponseAlbumUserPicture.fromData(data[11])
+          : null,
+      phoneNumber: data[10],
+      timestamps: data[4] != null
+          ? PhotosGetCollectionResponseAlbumUserTimestamps.fromData(data[4])
+          : null,
+    );
+  }
+}
+
 class PhotosGetCollectionResponseAlbumUserDetails {
   String? displayName;
   String? gender;
