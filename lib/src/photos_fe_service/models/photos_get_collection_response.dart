@@ -1,3 +1,34 @@
+class PhotosGetCollectionResponseAlbumOwner {
+  PhotosGetCollectionResponseAlbumUserDetails? details;
+  PhotosGetCollectionResponseAlbumUserIdentifiers? identifiers;
+  String? phoneNumber;
+  PhotosGetCollectionResponseAlbumUserPicture? picture;
+
+  PhotosGetCollectionResponseAlbumOwner({
+    this.details,
+    this.identifiers,
+    this.picture,
+    this.phoneNumber,
+  });
+
+  factory PhotosGetCollectionResponseAlbumOwner.fromData(
+    List<dynamic> data,
+  ) {
+    return PhotosGetCollectionResponseAlbumOwner(
+      details: data[3] != null
+          ? PhotosGetCollectionResponseAlbumUserDetails.fromData(data[3])
+          : null,
+      identifiers: data[5] != null
+          ? PhotosGetCollectionResponseAlbumUserIdentifiers.fromData(data[5])
+          : null,
+      picture: data[11] != null
+          ? PhotosGetCollectionResponseAlbumUserPicture.fromData(data[11])
+          : null,
+      phoneNumber: data[10],
+    );
+  }
+}
+
 class PhotosGetCollectionResponseAlbumUser {
   PhotosGetCollectionResponseAlbumUserDetails? details;
   PhotosGetCollectionResponseAlbumUserIdentifiers? identifiers;
