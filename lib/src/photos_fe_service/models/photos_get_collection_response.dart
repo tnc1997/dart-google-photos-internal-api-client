@@ -1,3 +1,36 @@
+class PhotosGetCollectionResponseAlbum {
+  String? id;
+  PhotosGetCollectionResponseAlbumOwner? owner;
+  String? title;
+  Uri? url;
+  List<PhotosGetCollectionResponseAlbumUser>? users;
+
+  PhotosGetCollectionResponseAlbum({
+    this.id,
+    this.owner,
+    this.title,
+    this.url,
+    this.users,
+  });
+
+  factory PhotosGetCollectionResponseAlbum.fromData(
+    List<dynamic> data,
+  ) {
+    return PhotosGetCollectionResponseAlbum(
+      id: data[0],
+      owner: data[5] != null
+          ? PhotosGetCollectionResponseAlbumOwner.fromData(data[5])
+          : null,
+      title: data[1],
+      url: data[32] != null ? Uri.parse(data[32]) : null,
+      users: data[28]
+          ?.map<PhotosGetCollectionResponseAlbumUser>(
+              (data) => PhotosGetCollectionResponseAlbumUser.fromData(data))
+          .toList(),
+    );
+  }
+}
+
 class PhotosGetCollectionResponseAlbumOwner {
   PhotosGetCollectionResponseAlbumUserDetails? details;
   PhotosGetCollectionResponseAlbumUserIdentifiers? identifiers;
