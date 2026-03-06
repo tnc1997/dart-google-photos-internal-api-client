@@ -1,3 +1,28 @@
+class PhotosGetCollectionResponse {
+  PhotosGetCollectionResponseAlbum? album;
+  List<PhotosGetCollectionResponseMediaItem>? mediaItems;
+  String? nextPageId;
+
+  PhotosGetCollectionResponse({
+    this.album,
+    this.mediaItems,
+    this.nextPageId,
+  });
+
+  factory PhotosGetCollectionResponse.fromData(
+    List<dynamic> data,
+  ) {
+    return PhotosGetCollectionResponse(
+      album: PhotosGetCollectionResponseAlbum.fromData(data[3]),
+      mediaItems: data[1]
+          ?.map<PhotosGetCollectionResponseMediaItem>(
+              (data) => PhotosGetCollectionResponseMediaItem.fromData(data))
+          .toList(),
+      nextPageId: data[2],
+    );
+  }
+}
+
 class PhotosGetCollectionResponseAlbum {
   String? id;
   PhotosGetCollectionResponseAlbumOwner? owner;
