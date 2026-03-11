@@ -1,3 +1,62 @@
+class PhotosReadItemsByIdResponseMediaItemDetails {
+  DateTime? createdAt;
+  String? description;
+  String? fileName;
+  int? fileSize;
+  PhotosReadItemsByIdResponseMediaItemDetailsStorage? storage;
+  int? timezoneOffset;
+  DateTime? updatedAt;
+
+  PhotosReadItemsByIdResponseMediaItemDetails({
+    this.createdAt,
+    this.description,
+    this.fileName,
+    this.fileSize,
+    this.storage,
+    this.timezoneOffset,
+    this.updatedAt,
+  });
+
+  factory PhotosReadItemsByIdResponseMediaItemDetails.fromData(
+    List<dynamic> data,
+  ) {
+    switch (data.length) {
+      case 26:
+        return PhotosReadItemsByIdResponseMediaItemDetails(
+          createdAt: data[6] != null
+              ? DateTime.fromMillisecondsSinceEpoch(data[6])
+              : null,
+          description: data[2],
+          fileName: data[3],
+          fileSize: data[9],
+          timezoneOffset: data[7],
+          updatedAt: data[8] != null
+              ? DateTime.fromMillisecondsSinceEpoch(data[8])
+              : null,
+        );
+      case 35:
+        return PhotosReadItemsByIdResponseMediaItemDetails(
+          createdAt: data[6] != null
+              ? DateTime.fromMillisecondsSinceEpoch(data[6])
+              : null,
+          description: data[2],
+          fileName: data[3],
+          fileSize: data[9],
+          storage: data[34] != null
+              ? PhotosReadItemsByIdResponseMediaItemDetailsStorage.fromData(
+                  data[34])
+              : null,
+          timezoneOffset: data[7],
+          updatedAt: data[8] != null
+              ? DateTime.fromMillisecondsSinceEpoch(data[8])
+              : null,
+        );
+      default:
+        throw ArgumentError.value(data, 'data');
+    }
+  }
+}
+
 class PhotosReadItemsByIdResponseMediaItemDetailsStorage {
   bool? doesConsumeStorage;
   int? highQualityFileSize;
