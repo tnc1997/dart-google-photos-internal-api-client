@@ -1,3 +1,29 @@
+class PhotosReadItemsByIdResponseMediaItem {
+  PhotosReadItemsByIdResponseMediaItemDetails? details;
+  String? id;
+  PhotosReadItemsByIdResponseMediaItemOwner? owner;
+
+  PhotosReadItemsByIdResponseMediaItem({
+    this.details,
+    this.id,
+    this.owner,
+  });
+
+  factory PhotosReadItemsByIdResponseMediaItem.fromData(
+    List<dynamic> data,
+  ) {
+    return PhotosReadItemsByIdResponseMediaItem(
+      details: data[1] != null
+          ? PhotosReadItemsByIdResponseMediaItemDetails.fromData(data[1])
+          : null,
+      id: data[0],
+      owner: data[5] != null
+          ? PhotosReadItemsByIdResponseMediaItemOwner.fromData(data[5])
+          : null,
+    );
+  }
+}
+
 class PhotosReadItemsByIdResponseMediaItemDetails {
   DateTime? createdAt;
   String? description;
