@@ -1,3 +1,22 @@
+class PhotosReadItemsByIdResponse {
+  List<PhotosReadItemsByIdResponseMediaItem>? mediaItems;
+
+  PhotosReadItemsByIdResponse({
+    this.mediaItems,
+  });
+
+  factory PhotosReadItemsByIdResponse.fromData(
+    List<dynamic> data,
+  ) {
+    return PhotosReadItemsByIdResponse(
+      mediaItems: data[0][1]
+          ?.map<PhotosReadItemsByIdResponseMediaItem>(
+              (data) => PhotosReadItemsByIdResponseMediaItem.fromData(data))
+          .toList(),
+    );
+  }
+}
+
 class PhotosReadItemsByIdResponseMediaItem {
   PhotosReadItemsByIdResponseMediaItemDetails? details;
   String? id;
