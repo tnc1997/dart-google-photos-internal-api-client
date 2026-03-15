@@ -6,6 +6,7 @@ import '../../common/constants/rpc_id.dart';
 import '../../common/exceptions/google_photos_internal_api_client_exception.dart';
 import '../models/photos_get_collection_response.dart';
 import '../models/photos_get_user_collections_response.dart';
+import '../models/photos_read_items_by_id_response.dart';
 
 class PhotosFeService {
   final http.Client _client;
@@ -110,6 +111,97 @@ class PhotosFeService {
     GooglePhotosInternalApiClientException.checkIsSuccessStatusCode(response);
 
     return PhotosGetUserCollectionsResponse.fromData(
+      json.decode(
+        json.decode(
+          response.body.split('\n').where(
+            (line) {
+              return line.contains('wrb.fr');
+            },
+          ).single,
+        )[0][2],
+      ),
+    );
+  }
+
+  Future<PhotosReadItemsByIdResponse> photosReadItemsById(
+    List<String> mediaItemIds,
+  ) async {
+    final response = await _client.post(
+      Uri.https(
+        'photos.google.com',
+        '/_/PhotosUi/data/batchexecute',
+        {
+          'rpcids': RpcId.photosFeServicePhotosReadItemsById,
+          'source-path': '/',
+        },
+      ),
+      body: {
+        'f.req': json.encode(
+          [
+            [
+              [
+                RpcId.photosFeServicePhotosReadItemsById,
+                json.encode(
+                  [
+                    [
+                      [
+                        mediaItemIds.map<List<String>>((id) => [id]).toList(),
+                      ],
+                      [
+                        [
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          [],
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          null,
+                          [],
+                        ],
+                      ],
+                    ],
+                  ],
+                ),
+                null,
+                'generic',
+              ],
+            ],
+          ],
+        ),
+      },
+    );
+
+    GooglePhotosInternalApiClientException.checkIsSuccessStatusCode(response);
+
+    return PhotosReadItemsByIdResponse.fromData(
       json.decode(
         json.decode(
           response.body.split('\n').where(
