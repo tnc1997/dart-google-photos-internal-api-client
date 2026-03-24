@@ -1,3 +1,4 @@
+export 'src/common/clients/cookie_client.dart';
 export 'src/common/constants/extension_id.dart';
 export 'src/common/constants/rpc_id.dart';
 export 'src/common/exceptions/cookie_client_exception.dart';
