@@ -23,6 +23,28 @@ class CookieClient extends http.BaseClient {
   })  : _cookies = cookies,
         _inner = inner ?? http.Client();
 
+  /// Creates a new [CookieClient] by parsing a header value from a 'cookie' header.
+  factory CookieClient.fromCookieHeaderValue(
+    String value, {
+    http.Client? inner,
+  }) {
+    return CookieClient._(
+      cookies: Map<String, String>.fromEntries(
+        value.split(';').map(
+          (value) {
+            final kv = value.split('=');
+
+            return MapEntry<String, String>(
+              kv.first,
+              kv.sublist(1).join(),
+            );
+          },
+        ),
+      ),
+      inner: inner,
+    );
+  }
+
   @override
   void close() {
     _inner.close();
