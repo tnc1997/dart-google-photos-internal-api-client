@@ -45,6 +45,28 @@ class CookieClient extends http.BaseClient {
     );
   }
 
+  /// Creates a new [CookieClient] by parsing header values from 'set-cookie' headers.
+  factory CookieClient.fromSetCookieHeaderValues(
+    List<String> values, {
+    http.Client? inner,
+  }) {
+    return CookieClient._(
+      cookies: Map.fromEntries(
+        values.map(
+          (value) {
+            final kv = value.split(';').first.split('=');
+
+            return MapEntry<String, String>(
+              kv.first,
+              kv.sublist(1).join(),
+            );
+          },
+        ),
+      ),
+      inner: inner,
+    );
+  }
+
   @override
   void close() {
     _inner.close();
